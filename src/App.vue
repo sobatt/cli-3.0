@@ -3,10 +3,37 @@
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
+        <!-- <router-link :to="{ name: 'Home'}">AAA</router-link> |
+      <router-link :to="{ name: 'Parent' }">BBB</router-link> -->
     </div>
-    <router-view/>
+    <transition-group name='router'>
+      <router-view key='default'/>
+      <router-view key ='email' name="email"/>
+      <router-view key='tel' name="tel"/>
+      </transition-group>
   </div>
 </template>
+
+<style lang="less">
+  .router-enter{
+    opacity: 0;
+  }
+  .router-enter-active{
+    transition: opacity 1s ease;
+  }
+  .router-enter-to{
+    opacity: 1;
+  }
+  .router-leave{
+    opacity: 1;
+  }
+  .router-leave-active{
+    transition: opacity 1s ease;
+  }
+  .router-leave-to{
+    opacity: 0;
+  }
+</style>
 
 <style lang="less">
 #app {
